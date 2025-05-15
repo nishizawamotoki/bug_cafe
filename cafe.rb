@@ -19,16 +19,16 @@ def take_order(menus)
     puts "(#{i})#{menu[:name]}: #{menu[:price]}円"
   end
   print '>'
-  order_number = gets.to_i
-  puts "#{menus[order_number - 1][:name]}(#{menus[order_number - 1][:price]}円)ですね。"
-  order_number
+  ordered_menu_index = gets.to_i - 1
+  puts "#{menus[ordered_menu_index][:name]}(#{menus[ordered_menu_index][:price]}円)ですね。"
+  ordered_menu_index
 end
 
 puts 'bugカフェへようこそ！ご注文は？ 番号でどうぞ'
-order1 = take_order(DRINKS)
+ordered_drink_index = take_order(DRINKS)
 
 puts 'フードメニューはいかがですか?'
-order2 = take_order(FOODS)
+ordered_food_index = take_order(FOODS)
 
-total = DRINKS[order1 - 1][:price] + FOODS[order2 - 1][:price]
+total = DRINKS[ordered_drink_index][:price] + FOODS[ordered_food_index][:price]
 puts "お会計は#{total}円になります。ありがとうございました！"
